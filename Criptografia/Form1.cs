@@ -15,7 +15,7 @@ namespace Criptografia
 
         Dictionary<char, int> mapaCriptografia = new Dictionary<char, int>()
             {
-                {'A', 10}, {'B', 52}, {'C', 93}, {'D', 49}, {'E', 54}, {'F', 259}, {'G', 825}, {'H', 61}, {'I', 47}, {'J', 333}, {'L', 482}, {'M', 29}, {'N', 31}, {'O', 96}, {'P', 231}, {'Q', 799}, {'R', 568}, {'S', 178}, {'T', 873}, {'U', 993}, {'V', 22}, {'W', 76}, {'X', 37}, {'Y', 64}, {'Z', 17}
+                {'A', 10}, {'B', 52}, {'C', 93}, {'D', 49}, {'E', 54}, {'F', 259}, {'G', 825}, {'H', 61}, {'I', 47}, {'J', 333}, {'K', 347}, {'L', 482}, {'M', 29}, {'N', 31}, {'O', 96}, {'P', 231}, {'Q', 799}, {'R', 568}, {'S', 178}, {'T', 873}, {'U', 993}, {'V', 22}, {'W', 76}, {'X', 37}, {'Y', 64}, {'Z', 17},   {' ', 973} 
             };
 
         public Form1()
@@ -31,8 +31,8 @@ namespace Criptografia
 
         private void btncrip_Click(object sender, EventArgs e)
         {
-            string texto = txbn.Text.ToUpper(); // converte para maiúsculas
-            List<string> resultados = new List<string>();
+            string texto = txbn.Text.ToUpper();
+            StringBuilder resultadoFinal = new StringBuilder();
 
             foreach (char c in texto)
             {
@@ -40,51 +40,62 @@ namespace Criptografia
                 {
                     int valor = mapaCriptografia[c];
 
-                    // Aplica a fórmula:
-                    // ((valor * 7) + 9) / 3 * 8
+                    double passo1 = valor * 483;
+                    double passo2 = passo1 / 67.0;
+                    double passo3 = passo2 + 98;
+                    double passo4 = passo3 * 32;
+                    double passo5 = passo4 - 7;
+                    double passo6 = passo5 * 9;
+                    double passo7 = passo6 / 43.0;
+                    double passo8 = passo7 * 97;
+                    double passo9 = passo8 / 54.0;
+                    double passo10 = passo9 + 876;
+                    double passo11 = passo10 * 9;
+                    double passo12 = passo11 / 2.0;
+                   
+                  
 
-                    double passo1 = valor * 7;
-                    double passo2 = passo1 + 9;
-                    double passo3 = passo2 / 3.0;
-                    double passo4 = passo3 * 8;
+                    int resultadoCriptografado = (int)Math.Round(passo12);
 
-                    // Arredondar Resultado
-                    int resultadoFinal = (int)Math.Round(passo4);
-
-                    resultados.Add(resultadoFinal.ToString());
+                    // Força 6 dígitos, por exemplo: 000521
+                    resultadoFinal.Append(resultadoCriptografado.ToString("D6"));
                 }
                 else
                 {
-                    resultados.Add("??"); // para caracteres que não existem no dicionário
+                    resultadoFinal.Append("??????");
                 }
             }
 
-            // Junta resultados separados por hífen
-            txtcrip.Text = string.Join("-", resultados);
+            txtcrip.Text = resultadoFinal.ToString();
         }
 
         private void btndcrip_Click(object sender, EventArgs e)
         {
-            // Criar dicionário inverso valor → letra para facilitar busca
-            Dictionary<int, char> mapaDescriptografia = new Dictionary<int, char>();
-            foreach (var par in mapaCriptografia)
-            {
-                mapaDescriptografia[par.Value] = par.Key;
-            }
+            Dictionary<int, char> mapaDescriptografia = mapaCriptografia.ToDictionary(kvp => kvp.Value, kvp => kvp.Key);
 
             string textoCriptografado = txtcrip.Text;
-            string[] valores = textoCriptografado.Split('-');
-
             StringBuilder textoOriginal = new StringBuilder();
 
-            foreach (string valStr in valores)
+            for (int i = 0; i <= textoCriptografado.Length - 6; i += 6)
             {
-                if (int.TryParse(valStr, out int resultado))
-                {
-                    // Aplica fórmula inversa para achar o valor original
-                    double valorOriginal = (3.0 * (resultado / 8.0) - 9) / 7.0;
+                string bloco = textoCriptografado.Substring(i, 6);
 
-                    // Arredonda para o inteiro mais próximo (pois o valor original era inteiro)
+                if (int.TryParse(bloco, out int resultado))
+                {
+                    
+                    double passo11 = resultado * 2.0;
+                    double passo10 = passo11 / 9.0;
+                    double passo9 = passo10 - 876;
+                    double passo8 = passo9 * 54.0;
+                    double passo7 = passo8 / 97.0;
+                    double passo6 = passo7 * 43.0;
+                    double passo5 = passo6 / 9.0;
+                    double passo4 = passo5 + 7;
+                    double passo3 = passo4 / 32.0;
+                    double passo2 = passo3 - 98;
+                    double passo1 = passo2 * 67.0;
+                    double valorOriginal = passo1 / 483.0;
+
                     int valorInt = (int)Math.Round(valorOriginal);
 
                     if (mapaDescriptografia.ContainsKey(valorInt))
@@ -93,17 +104,18 @@ namespace Criptografia
                     }
                     else
                     {
-                        textoOriginal.Append('?'); // valor não encontrado no mapa
+                        textoOriginal.Append('?');
                     }
                 }
                 else
                 {
-                    textoOriginal.Append('?'); // valor inválido
+                    textoOriginal.Append('?');
                 }
             }
 
             txtdcrip.Text = textoOriginal.ToString();
         }
     }
+    }
     
-}
+

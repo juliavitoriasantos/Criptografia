@@ -50,7 +50,7 @@
             // lbln
             // 
             this.lbln.AutoSize = true;
-            this.lbln.Location = new System.Drawing.Point(121, 110);
+            this.lbln.Location = new System.Drawing.Point(100, 37);
             this.lbln.Name = "lbln";
             this.lbln.Size = new System.Drawing.Size(44, 13);
             this.lbln.TabIndex = 1;
@@ -58,7 +58,7 @@
             // 
             // btncrip
             // 
-            this.btncrip.Location = new System.Drawing.Point(103, 227);
+            this.btncrip.Location = new System.Drawing.Point(89, 110);
             this.btncrip.Name = "btncrip";
             this.btncrip.Size = new System.Drawing.Size(75, 23);
             this.btncrip.TabIndex = 2;
@@ -68,29 +68,29 @@
             // 
             // txbn
             // 
-            this.txbn.Location = new System.Drawing.Point(92, 160);
+            this.txbn.Location = new System.Drawing.Point(78, 72);
             this.txbn.Name = "txbn";
             this.txbn.Size = new System.Drawing.Size(100, 20);
             this.txbn.TabIndex = 3;
             // 
             // txtcrip
             // 
-            this.txtcrip.Location = new System.Drawing.Point(303, 160);
+            this.txtcrip.Location = new System.Drawing.Point(1, 308);
             this.txtcrip.Name = "txtcrip";
-            this.txtcrip.Size = new System.Drawing.Size(142, 20);
+            this.txtcrip.Size = new System.Drawing.Size(798, 20);
             this.txtcrip.TabIndex = 4;
             // 
             // txtdcrip
             // 
-            this.txtdcrip.Location = new System.Drawing.Point(527, 159);
+            this.txtdcrip.Location = new System.Drawing.Point(565, 72);
             this.txtdcrip.Name = "txtdcrip";
-            this.txtdcrip.Size = new System.Drawing.Size(100, 20);
+            this.txtdcrip.Size = new System.Drawing.Size(162, 20);
             this.txtdcrip.TabIndex = 5;
             // 
             // lblcrip
             // 
             this.lblcrip.AutoSize = true;
-            this.lblcrip.Location = new System.Drawing.Point(300, 110);
+            this.lblcrip.Location = new System.Drawing.Point(75, 269);
             this.lblcrip.Name = "lblcrip";
             this.lblcrip.Size = new System.Drawing.Size(106, 13);
             this.lblcrip.TabIndex = 6;
@@ -99,7 +99,7 @@
             // lbldcrip
             // 
             this.lbldcrip.AutoSize = true;
-            this.lbldcrip.Location = new System.Drawing.Point(524, 109);
+            this.lbldcrip.Location = new System.Drawing.Point(584, 37);
             this.lbldcrip.Name = "lbldcrip";
             this.lbldcrip.Size = new System.Drawing.Size(124, 13);
             this.lbldcrip.TabIndex = 7;
@@ -107,7 +107,7 @@
             // 
             // btndcrip
             // 
-            this.btndcrip.Location = new System.Drawing.Point(303, 227);
+            this.btndcrip.Location = new System.Drawing.Point(78, 363);
             this.btndcrip.Name = "btndcrip";
             this.btndcrip.Size = new System.Drawing.Size(92, 23);
             this.btndcrip.TabIndex = 8;
