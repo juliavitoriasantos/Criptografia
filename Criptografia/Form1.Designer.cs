@@ -68,9 +68,9 @@
             // 
             // txbn
             // 
-            this.txbn.Location = new System.Drawing.Point(78, 72);
+            this.txbn.Location = new System.Drawing.Point(42, 72);
             this.txbn.Name = "txbn";
-            this.txbn.Size = new System.Drawing.Size(100, 20);
+            this.txbn.Size = new System.Drawing.Size(162, 20);
             this.txbn.TabIndex = 3;
             // 
             // txtcrip
